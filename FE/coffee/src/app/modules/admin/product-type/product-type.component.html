@@ -1,0 +1,42 @@
+<button (click)="onShow(null)">ADD</button>
+<table>
+  <tr>
+    <td>STT</td>
+    <td>Name</td>
+    <td>Actions</td>
+  </tr>
+  <tr *ngFor="let productType of listProductType; let i = index">
+    <td>{{i + 1}}</td>
+    <td>{{productType.name}}</td>
+    <td>
+      <button (click)="onShow(productType.id)">EDIT</button>
+      <button (click)="onDelete(productType.id)">DELETE</button>
+    </td>
+  </tr>
+</table>
+
+<!-- Modal -->
+<div class='modal' [ngClass]="show? 'show':''">
+  <div class='modal-overlay'>
+  </div>
+  <div class="modal-body">
+    <form action="" [formGroup]="productTypeForm">
+      <div>
+        <p>Name</p>
+        <input formControlName="name" type="text">
+      </div>
+      <ng-template [ngIf]="!update">
+        <div class="btn-ok">
+          <button (click)="onHide()">Cancel</button>
+          <button (click)="onCreateProductType()">Create</button>
+        </div>
+      </ng-template>
+      <ng-template [ngIf]="update">
+        <div class="btn-ok">
+          <button (click)="onHide()">Cancel</button>
+          <button (click)="onUpdate()">Update</button>
+        </div>
+      </ng-template>
+    </form>
+  </div>
+</div>

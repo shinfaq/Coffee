@@ -1,0 +1,62 @@
+<button (click)="onShow(null)">ADD</button>
+<div class="content">
+  <table>
+    <tr>
+      <td>STT</td>
+      <td>Ten</td>
+      <td>Gia</td>
+      <td>Hinh Anh</td>
+      <td>Actions</td>
+    </tr>
+    <tr *ngFor="let product of listProduct; let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+      <td><img src="{{product.image}}" width="50px" alt=""></td>
+      <td>
+        <button (click)="onShow(product.id)">EDIT</button>
+        <button (click)="onDelete(product.id)">DELETE</button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- Modal -->
+<div class='modal' [ngClass]="show? 'show':''">
+  <div class='modal-overlay' (click)="onHide()">
+  </div>
+  <div class="modal-body">
+    <p>Image</p>
+    <input type="file" accept="image/*" (change)="selectFile($event)" [(ngModel)]='imagesUrl'
+      (cancel)='selectFile($event)'>
+    <img width="100px" [src]="imagesUrl" alt="">
+    <form action="" [formGroup]="productForm">
+      <div>
+        <p>Name</p>
+        <input formControlName="name" type="text">
+      </div>
+      <div>
+        <p>Price</p>
+        <input formControlName="price" type="number">
+      </div>
+      <div>
+        <p>Type</p>
+        <select formControlName="type">
+          <option *ngFor="let productType of listProductType" value="{{productType.id}}">{{productType.name}}</option>
+        </select>
+      </div>
+      <ng-template [ngIf]="!update">
+        <div class="btn-ok">
+          <button (click)="onHide()">Cancel</button>
+          <button (click)="onCreate()">Create</button>
+        </div>
+      </ng-template>
+      <ng-template [ngIf]="update">
+        <div class="btn-ok">
+          <button (click)="onHide()">Cancel</button>
+          <button (click)="onUpdate()">Update</button>
+        </div>
+      </ng-template>
+    </form>
+  </div>
+</div>
