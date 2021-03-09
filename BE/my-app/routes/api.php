@@ -43,8 +43,7 @@ Route::group(['prefix' => '/order'], function () {
     Route::get('', [OrderController::class, 'getAll']);
     Route::get('/{id}', [OrderController::class, 'getOrder']);
     Route::post('', [OrderController::class, 'createOrder']);
-    Route::put('', [OrderController::class, 'updateProduct']);
-    // Route::delete('/{id}', [OrderController::class, 'deleteProductType']);
+    Route::put('', [OrderController::class, 'deleteOrder']);
 });
 Route::group(['prefix' => '/report'], function () {
     Route::get('/type', [ReportController::class, 'getTotalOrderByType']);

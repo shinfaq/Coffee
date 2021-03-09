@@ -134,7 +134,7 @@ class OrderController extends Controller
             throw new Exception('err');
         }
     }
-    public function deleteProduct($id)
+    public function deleteOrder($id)
     {
         $order = order::find($id);
         if ($order) {
