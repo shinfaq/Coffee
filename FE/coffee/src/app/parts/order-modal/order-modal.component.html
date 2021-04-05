@@ -1,0 +1,6 @@
+<div class="product-container" *ngIf="show">
+  <div *ngFor="let product of listOrder" class="product-item">
+    <img src="{{ product.image }}" alt="" />
+    {{ product.name }} - {{ product.price }}
+  </div>
+</div>

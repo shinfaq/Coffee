@@ -1,7 +1,7 @@
 import { UploadFileService } from './../../../service/upload-file.service';
 import { ProductTypeService } from './../../../service/product-type.service';
 import { ProductService } from './../../../service/product.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
+  @ViewChild('inputFile') myInputVariable: ElementRef;
   productForm: FormGroup;
   constructor(
     private productService: ProductService,
@@ -47,6 +48,8 @@ export class ProductComponent implements OnInit {
   show: boolean = false;
   onShow(id) {
     this.initForm();
+    this.imagesUrl = null;
+    this.myInputVariable.nativeElement.value = '';
     if (id) {
       this.update = true;
       this.productService.getProductById(id).subscribe((res) => {
@@ -97,14 +100,11 @@ export class ProductComponent implements OnInit {
   }
   selectFile(event) {
     let files: FileList = event.target.files;
-    console.log(files);
     if (!files.length || files.length <= 0) {
       this.imagesUrl = null;
       return;
     }
-
     const selectFile: File = files[0];
-    console.log(selectFile['type'].split('/')[0] == 'image');
     if (selectFile['type'].split('/')[0] !== 'image') {
       return;
     }

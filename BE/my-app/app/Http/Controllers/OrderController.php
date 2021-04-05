@@ -73,9 +73,8 @@ class OrderController extends Controller
             throw new Exception('err');
         }
     }
-    public function updateProduct(Request $request)
+    public function updateOrder(Request $request)
     {
-
         try {
             return DB::connection()->transaction(function () use ($request) {
                 $error = false;

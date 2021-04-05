@@ -1,3 +1,6 @@
-<div *ngFor="let product of listProduct">
-  {{product.name}} - {{product.price}}
+<div class="product-container">
+  <div *ngFor="let product of listProduct" class="product-item" (click)="addOrder(product)">
+    <img src="{{ product.image }}" alt="" />
+    {{ product.name }} - {{ product.price }}
+  </div>
 </div>

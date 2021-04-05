@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\product;
 use Illuminate\Http\Request;
 use App\Models\product_type;
 use Illuminate\Http\Response;
@@ -53,6 +54,8 @@ class ProductTypeController
     {
         $product_type = product_type::find($id);
         if ($product_type) {
+            $list_product = product::where('type', $id);
+            $list_product->delete();
             $product_type->delete();
             return response()->json([
                 'status' => 'OK',

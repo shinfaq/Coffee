@@ -43,6 +43,6 @@ class User extends Authenticatable
     ];
     public function has_shift()
     {
-        return $this->hasMany(shift::class, 'users_id', 'id');
+        return $this->hasMany(Shift::class, 'users_id', 'id');
     }
 }

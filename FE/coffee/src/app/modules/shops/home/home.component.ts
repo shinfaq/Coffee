@@ -1,3 +1,4 @@
+import { ShareService } from './../../../service/share.service';
 import { ProductService } from './../../../service/product.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private shareService:   ShareService
+  ) {}
 
   listProduct = [];
   async ngOnInit(): Promise<void> {
@@ -16,5 +20,8 @@ export class HomeComponent implements OnInit {
 
   getAllProduct() {
     return this.productService.getAll().toPromise();
+  }
+  addOrder(item) {
+    this.shareService.changeData(item);;;
   }
 }

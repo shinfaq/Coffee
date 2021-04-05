@@ -27,7 +27,7 @@
   </div>
   <div class="modal-body">
     <p>Image</p>
-    <input type="file" accept="image/*" (change)="selectFile($event)" [(ngModel)]='imagesUrl'
+    <input #inputFile type="file" accept="image/*" (change)="selectFile($event)"
       (cancel)='selectFile($event)'>
     <img width="100px" [src]="imagesUrl" alt="">
     <form action="" [formGroup]="productForm">
