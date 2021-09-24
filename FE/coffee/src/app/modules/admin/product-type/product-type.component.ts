@@ -1,5 +1,5 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProductTypeService } from './../../../service/product-type.service';
+import { ProductTypeService } from 'src/app/service/product-type.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

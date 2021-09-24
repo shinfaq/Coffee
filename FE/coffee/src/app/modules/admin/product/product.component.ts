@@ -1,6 +1,6 @@
-import { UploadFileService } from './../../../service/upload-file.service';
-import { ProductTypeService } from './../../../service/product-type.service';
-import { ProductService } from './../../../service/product.service';
+import { UploadFileService } from 'src/app/service/upload-file.service';
+import { ProductTypeService } from 'src/app/service/product-type.service';
+import { ProductService } from 'src/app/service/product.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 

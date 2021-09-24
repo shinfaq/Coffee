@@ -1,0 +1,14 @@
+.table-container{
+  display: flex;
+  flex-wrap: wrap;
+  .table-item{
+    width: 200px;
+    img{
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
+.disable{
+  cursor: not-allowed;
+}

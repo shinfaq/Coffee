@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\TableController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -37,6 +38,13 @@ Route::group(['prefix' => '/product_type'], function () {
     Route::post('', [ProductTypeController::class, 'createProductType']);
     Route::put('', [ProductTypeController::class, 'updateProductType']);
     Route::delete('/{id}', [ProductTypeController::class, 'deleteProductType']);
+});
+Route::group(['prefix' => '/table'], function () {
+    Route::get('', [TableController::class, 'getAll']);
+    Route::get('/{id}', [TableController::class, 'getTable']);
+    Route::post('', [TableController::class, 'createTable']);
+    Route::put('', [TableController::class, 'updateTable']);
+    Route::delete('/{id}', [TableController::class, 'deleteTable']);
 });
 Route::post('/upload', [UploadController::class, 'uploadFile']);
 Route::group(['prefix' => '/order'], function () {

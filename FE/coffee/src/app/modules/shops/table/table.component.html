@@ -1,0 +1,6 @@
+<div class="table-container">
+  <div *ngFor="let table of listTable" class="table-item" [ngClass]="table.status  == 1 ? 'disable' : ''">
+      <img src="{{table.status ==1? imgFull:imgEmpty }}" alt="">
+      <span>{{table.name}}</span>
+  </div>
+</div>

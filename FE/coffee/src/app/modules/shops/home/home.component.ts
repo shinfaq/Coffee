@@ -1,5 +1,5 @@
-import { ShareService } from './../../../service/share.service';
-import { ProductService } from './../../../service/product.service';
+import { ShareService } from 'src/app/service/share.service';
+import { ProductService } from 'src/app/service/product.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   constructor(
     private productService: ProductService,
-    private shareService:   ShareService
+    private shareService: ShareService
   ) {}
 
   listProduct = [];
@@ -22,6 +22,6 @@ export class HomeComponent implements OnInit {
     return this.productService.getAll().toPromise();
   }
   addOrder(item) {
-    this.shareService.changeData(item);;;
+    this.shareService.changeData(item);
   }
 }
